@@ -1,3 +1,6 @@
+import Link from "next/link"
+import React from "react"
+
 async function getData() {
   const res = await fetch('https://fakestoreapi.com/products')
   // The return value is *not* serialized
@@ -8,16 +11,18 @@ async function getData() {
     throw new Error('Failed to fetch data')
   }
  
-  return res.json()
+  return  res.json()
 }
  
 export default async function Page() {
   const data = await getData()
- 
   return <main>
     {
       data.map((item, index) => (
-        <div key={index}>{ item.title }</div>
+        <React.Fragment key={index}>
+          <Link  href={`/products/${item.id}`}>{item.title}</Link>
+          <br></br>
+          </React.Fragment>
       ))
     }
   </main>

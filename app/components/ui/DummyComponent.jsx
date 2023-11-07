@@ -1,8 +1,14 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react'
 
 const DummyComponent = () => {
+  const [first, setfirst] = useState(false);
   return (
-    <div>DummyComponent</div>
+    <>
+     {first && <div>DummyComponent</div>}
+      <button onClick={() => setfirst((prev) => !prev)}>Switch</button>
+      </>
   )
 }
 
