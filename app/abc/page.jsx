@@ -22,7 +22,7 @@ export default async function Page() {
   return <main>
     <SearchBar/>
     {
-      data.filter(x => x.title === title).map((item, index) => {
+      data.map((item, index) => {
         const category = item.category.replace(/[^a-zA-Z0-9]+/g, '');
         return (
           <React.Fragment key={index}>
