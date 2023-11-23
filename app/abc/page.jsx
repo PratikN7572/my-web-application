@@ -1,6 +1,7 @@
 import { cookies } from "next/headers"
 import Link from "next/link"
 import React from "react"
+import SearchBar from "../components/ui/SearchBar"
 
 async function getData() {
   const res = await fetch('https://fakestoreapi.com/products')
@@ -19,8 +20,9 @@ export default async function Page() {
   const data = await getData()
   const cookie = cookies().get('language').value
   return <main>
+    <SearchBar/>
     {
-      data.map((item, index) => {
+      data.filter(x => x.title === title).map((item, index) => {
         const category = item.category.replace(/[^a-zA-Z0-9]+/g, '');
         return (
           <React.Fragment key={index}>
