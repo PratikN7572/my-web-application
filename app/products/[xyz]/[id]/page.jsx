@@ -15,6 +15,7 @@ async function getData(id) {
   return product.json();
 }
 const Page = async ({ params }) => {
+  console.log(params)
   const data = await getData(params?.id);
     return <div>{JSON.stringify(data, null)}
     <Image src={data.image} alt="abbc" width={100} height={100} />

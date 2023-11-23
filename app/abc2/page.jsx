@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const Page = () => {
+const Page = ({ params }) => {
   const router = useRouter();
   return (
     <div>

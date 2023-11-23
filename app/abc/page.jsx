@@ -16,14 +16,18 @@ async function getData() {
  
 export default async function Page() {
   const data = await getData()
+  console.log(data)
   return <main>
     {
-      data.map((item, index) => (
-        <React.Fragment key={index}>
-          <Link  href={`/products/${item.id}`}>{item.title}</Link>
-          <br></br>
+      data.map((item, index) => {
+        const category = item.category.replace(/[^a-zA-Z0-9]+/g, '');
+        return (
+          <React.Fragment key={index}>
+            <Link href={`/products/${category}/${item.id}/a/v/bv`}>{item.title}</Link>
+            <br></br>
           </React.Fragment>
-      ))
+        )
+      })
     }
   </main>
 }
