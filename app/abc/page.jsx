@@ -1,3 +1,4 @@
+import { cookies } from "next/headers"
 import Link from "next/link"
 import React from "react"
 
@@ -16,7 +17,7 @@ async function getData() {
  
 export default async function Page() {
   const data = await getData()
-  console.log(data)
+  const cookie = cookies().get('language').value
   return <main>
     {
       data.map((item, index) => {
@@ -29,5 +30,6 @@ export default async function Page() {
         )
       })
     }
+    <h1>selected language: { cookie }</h1>
   </main>
 }
