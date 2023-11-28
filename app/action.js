@@ -29,3 +29,7 @@ export async function setToken() {
     })
     redirect('/')
 }
+
+export async function customRedirect(route) {
+   await redirect(route)
+}
